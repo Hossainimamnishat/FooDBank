@@ -82,40 +82,4 @@ Simulated payment transactions
 Payment status (pending / paid / refunded)
 
 Full refunds
-┌──────────────────────────┐
-│        Frontend          │
-│ (Mobile App / Web App)   │
-└─────────────┬────────────┘
-              │ REST API (JSON)
-              ▼
-┌──────────────────────────────────────────────────────────────┐
-│                        Django Backend                         │
-│                                                              │
-│  ┌────────────┐   ┌──────────────┐   ┌──────────────────┐   │
-│  │  Accounts  │   │  Customers    │   │   Restaurants     │   │
-│  └────────────┘   └──────────────┘   └──────────────────┘   │
-│          │                    │                  │           │
-│  ┌────────────┐   ┌──────────────┐   ┌──────────────────┐   │
-│  │   Menus    │   │    Carts      │   │     Orders        │   │
-│  └────────────┘   └──────────────┘   └──────────────────┘   │
-│                     │                   │                    │
-│            ┌────────┴───────┐     ┌────┴────────┐          │
-│            │   Delivery     │     │   Payments   │          │
-│            └────────────────┘     └──────────────┘          │
-│                                                              │
-└──────────────────────────────────────────────────────────────┘
-              │
-              ▼
-      ┌────────────────┐
-      │  PostgreSQL    │
-      └────────────────┘
-| Role                 | Access                                        |
-| -------------------- | --------------------------------------------- |
-| **Customer**         | Cart, orders, payments                        |
-| **Restaurant Owner** | Manage restaurant, menus, orders              |
-| **Driver**           | Shifts, delivery assignments                  |
-| **Admin**            | Approvals, global views, refunds, commissions |
 
-Commission calculation per order
-
-Admin dashboards for transactions, refunds, commissions
